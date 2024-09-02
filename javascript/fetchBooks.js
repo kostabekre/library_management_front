@@ -1,7 +1,14 @@
-﻿function BookData(title, author, image) {
-    this.title = title;
-    this.author = author;
-    this.image = image;
+﻿function BookData(name, authorName, image) {
+    this.name = name;
+    this.authorName = authorName;
+    if(image === undefined)
+    {
+        this.image = "public/empty_cover.png";
+    }
+    else
+    {
+        this.image = image;
+    }
 }
 
 
@@ -20,20 +27,16 @@ function createBookTemplate(bookData) {
         </div>
         <div class="book-info">
           <div class="book-info-title">
-            <p><a href="#">${bookData.title}</a></p>
+            <p><a href="#">${bookData.name}</a></p>
           </div>
           <div class="book-info-author">
-            <p><a href="#">${bookData.author}</a></p>
+            <p><a href="#">${bookData.authorName}</a></p>
           </div>
         </div>
     </div>`
 }
 
-/**
- *
- * @returns {BookData[]}
- */
-function getBooksTest() {
+async function getBooksTest() {
     var book1 = new BookData("The Way of Kings", "Brandon Sanderson", "public/empty_cover.png");
     var book2 = new BookData("The Words of Radience", "Brandon Sanderson", "public/empty_cover.png");
     var book3 = new BookData("The oath bringer", "Brandon Sanderson", "public/empty_cover.png");
@@ -42,9 +45,31 @@ function getBooksTest() {
     return [book1, book2, book3, book4];
 }
 
-const bookFetcher = getBooksTest;
+async function getBooksApi() {
+    const uri = "http://127.0.0.1:5101/api/books/all";
+    try {
+        const response = await fetch(uri);
 
-const fetchedBooks = bookFetcher();
+        if (!response.ok) {
+            console.error(response.statusText);
+            return [];
+        }
+
+        const json = await response.json();
+        let result = [];
+        for (let book of json) {
+            result.push(new BookData(book.name, book.authorName));
+        }
+        return result;
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
+
+const bookFetcher = getBooksApi;
+
+const fetchedBooks = await bookFetcher();
 
 var booksContainer = document.getElementById('books-container');
 
