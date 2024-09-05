@@ -1,4 +1,5 @@
-﻿function BookData(name, authorName, image) {
+﻿function BookData(id, name, authorName, image) {
+    this.id = id;
     this.name = name;
     this.authorName = authorName;
     if(image === undefined)
@@ -37,16 +38,17 @@ function createBookTemplate(bookData) {
 }
 
 async function getBooksTest() {
-    var book1 = new BookData("The Way of Kings", "Brandon Sanderson", "public/empty_cover.png");
-    var book2 = new BookData("The Words of Radience", "Brandon Sanderson", "public/empty_cover.png");
-    var book3 = new BookData("The oath bringer", "Brandon Sanderson", "public/empty_cover.png");
-    var book4 = new BookData("The rithm of war", "Brandon Sanderson", "public/empty_cover.png");
+    var book1 = new BookData(1, "The Way of Kings", "Brandon Sanderson", "public/empty_cover.png");
+    var book2 = new BookData(2, "The Words of Radience", "Brandon Sanderson", "public/empty_cover.png");
+    var book3 = new BookData(3, "The oath bringer", "Brandon Sanderson", "public/empty_cover.png");
+    var book4 = new BookData(4, "The rithm of war", "Brandon Sanderson", "public/empty_cover.png");
 
     return [book1, book2, book3, book4];
 }
 
 async function getBooksApi() {
-    const uri = "http://127.0.0.1:5101/api/books/all";
+    const uri = "https://127.0.0.1:7221/api/books/all";
+    const uriCover = "https://127.0.0.1:7221/api/books/cover/";
     try {
         const response = await fetch(uri);
 
@@ -58,7 +60,20 @@ async function getBooksApi() {
         const json = await response.json();
         let result = [];
         for (let book of json) {
-            result.push(new BookData(book.name, book.authorName));
+            let image;
+            try {
+                const imageResponse = await fetch(uriCover + book.id);
+                if(imageResponse.status === 404)
+                {
+                    result.push(new BookData(book.id, book.name, book.authorName));
+                    continue;
+                }
+                const imageBlob = await imageResponse.blob();
+                image = URL.createObjectURL(imageBlob);
+            } catch (e) {
+                console.error(e.message);
+            }
+            result.push(new BookData(book.id, book.name, book.authorName, image));
         }
         return result;
     } catch (error) {
