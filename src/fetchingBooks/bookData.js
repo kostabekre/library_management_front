@@ -4,7 +4,7 @@
         this.name = name;
         this.authorName = authorName;
         if (image === undefined) {
-            this.image = "public/empty_cover.png";
+            this.image = '';
         } else {
             this.image = image;
         }

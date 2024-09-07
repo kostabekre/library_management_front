@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><% title %></title>
+  <link rel="stylesheet" href="../css/authors.css">
+  <%- include('head.html') -%>
+</head>
+<body>
+<%- include('header.html') -%>
+<main>
+  <div class="content">
+    <%- include('content-search.html') -%>
+    <div class="authors-container" id="authors-container"></div>
+  </div>
+</main>
+
+<%- include('footer.html') -%>
+<script type="module" src="../src/fetchingAuthors/fetchAuthors.js"></script>
+</body>
+</html>
