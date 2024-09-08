@@ -3,13 +3,15 @@
 <head>
     <title><% title %></title>
     <%- include ('head.html') -%>
+    <link rel="stylesheet" href="/css/publishers.css">
 </head>
 <body>
     <%- include ('header.html') -%>
     <div class="content">
         <%- include ('content-search.html') -%>
-        <div class="content-books-container" id="books-container"></div>
+        <div class="publishers-container" id="publishers-container"></div>
     </div>
     <%- include ('footer.html') -%>
+    <script type="module" src="/src/fetchingPublishers/fetchPublishers.js"></script>
 </body>
 </html>
