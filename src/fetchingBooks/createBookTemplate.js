@@ -13,10 +13,10 @@ export function createBookTemplate(bookData) {
         </div>
         <div class="book-info">
           <div class="book-info-title">
-            <p><a href="#">${bookData.name}</a></p>
+            <p><a href="/books/${bookData.id}">${bookData.name}</a></p>
           </div>
           <div class="book-info-author">
-            <p><a href="#">${bookData.authorName}</a></p>
+            <p><a href="/authors/${bookData.author.id}">${bookData.author.name}</a></p>
           </div>
         </div>
     </div>`

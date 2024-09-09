@@ -13,7 +13,7 @@ export async function getBooksAsync() {
         const json = await response.json();
         let result = {};
         for (let book of json) {
-            result[book.id] = new BookData(book.id, book.name, book.authorName);
+            result[book.id] = new BookData(book.id, book.name, book.author);
         }
         return result;
     } catch (error) {

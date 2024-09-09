@@ -1,6 +1,8 @@
 ﻿import express from "express";
 import ejs from "ejs";
 import ViteExpress from "vite-express";
+import {getBookHandler} from "./getBookHandler.js";
+import {getAuthorHandler} from "./getAuthorHandler.js";
 
 const app = express();
 
@@ -12,41 +14,19 @@ app.set('view engine', '.html');
 app.use('/public', express.static('public'));
 
 app.get('/', function(req, res){
-    res.render('books', {
-        title: "books"
-    });
+    res.render('books');
 });
 
-app.get('/books/:bookId', async function(req, res){
-    let response;
-    try {
-        response = await fetch("http://localhost:8080/api/books/" + 1);
-    } catch (e) {
-        console.error(e);
-    }
-    let data;
-    try {
-        data  = await response.json()
-    } catch (e) {
-        console.error(e)
-    }
-    res.send(data);
-});
+app.get('/books/:bookId', getBookHandler);
+
+app.get('/authors/:authorId', getAuthorHandler);
 
 app.get('/authors', function(req, res){
-    res.render('authors', {
-        title: "authors",
-    });
+    res.render('authors');
 });
 
 app.get('/publishers', function(req, res){
-    res.render('publishers', {
-        title: "EJS example",
-    });
-});
-
-app.get("/hello", async (req, res) => {
-    res.send("Hello Vite!");
+    res.render('publishers');
 });
 
 ViteExpress.listen(app, 3000, () =>
