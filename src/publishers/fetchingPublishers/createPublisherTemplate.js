@@ -13,10 +13,10 @@ export function createPublisherTemplate(publisherData) {
         </div>
         <div class="publisher-info">
           <div class="publisher-info-name">
-            <p><a href="#">${publisherData.name}</a></p>
+            <p><a href="#">${publisherData.details.name}</a></p>
           </div>
           <div class="publisher-info-address">
-            <p>${publisherData.address}</p>
+            <p>${publisherData.details.address}</p>
           </div>
         </div>
     </div>`

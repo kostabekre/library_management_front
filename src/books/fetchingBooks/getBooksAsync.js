@@ -1,7 +1,7 @@
-﻿import {AuthorData} from "./authorData";
+﻿import {BookData} from "../bookData.js";
 
-export async function getAuthorsAsync() {
-    const uri = "http://127.0.0.1:8080/api/authors";
+export async function getBooksAsync() {
+    const uri = "http://127.0.0.1:8080/api/books/all";
     try {
         const response = await fetch(uri);
 
@@ -12,8 +12,8 @@ export async function getAuthorsAsync() {
 
         const json = await response.json();
         let result = {};
-        for (let author of json) {
-            result[author.id] = new AuthorData(author.id, author.details.name, author.details.biography);
+        for (let book of json) {
+            result[book.id] = new BookData(book.id, book.name, book.author);
         }
         return result;
     } catch (error) {

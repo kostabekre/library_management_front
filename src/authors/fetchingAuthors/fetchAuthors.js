@@ -1,5 +1,5 @@
-﻿import {getAuthorsAsync} from "./getAuthorsAsync";
-import {createAuthorTemplate} from "./createAuthorTemplate";
+﻿import {getAuthorsAsync} from "./getAuthorsAsync.js";
+import {createAuthorTemplate} from "./createAuthorTemplate.js";
 
 const authorFetcher = getAuthorsAsync;
 

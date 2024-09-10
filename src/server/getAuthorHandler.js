@@ -13,7 +13,7 @@
         console.error(e);
     }
     res.render('author', {
-        title: data.name,
+        title: data.details.name,
         author: data
     });
 

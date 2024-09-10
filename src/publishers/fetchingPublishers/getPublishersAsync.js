@@ -1,4 +1,4 @@
-﻿import {PublisherData} from "./publisherData.js";
+﻿import {PublisherData} from "../publisherData.js";
 
 export async function getPublishersAsync() {
     const uri = "http://127.0.0.1:8080/api/publishers";

@@ -1,6 +1,6 @@
-﻿import {createBookTemplate} from "./createBookTemplate";
-import {getImagesAsync} from "./getImagesAsync";
-import {getBooksAsync} from "./getBooksAsync";
+﻿import {createBookTemplate} from "./createBookTemplate.js";
+import {getImagesAsync} from "./getImagesAsync.js";
+import {getBooksAsync} from "./getBooksAsync.js";
 
 const bookFetcher = getBooksAsync;
 
