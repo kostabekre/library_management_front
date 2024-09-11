@@ -2,14 +2,19 @@
 import {getImagesAsync} from "./getImagesAsync.js";
 import {getBooksAsync} from "./getBooksAsync.js";
 
-const bookFetcher = getBooksAsync;
 
-const fetchedBooks = await bookFetcher();
+/**
+ *
+ * @param uri {string}
+ */
+export async function fetchBooks(uri) {
+    const fetchedBooks = await getBooksAsync(uri);
 
-await getImagesAsync(fetchedBooks);
+    const booksContainer = document.getElementById('books-container');
 
-const booksContainer = document.getElementById('books-container');
+    for(const book of Object.values(fetchedBooks)) {
+        booksContainer.innerHTML += createBookTemplate(book);
+    }
 
-for(const book of Object.values(fetchedBooks)) {
-    booksContainer.innerHTML += createBookTemplate(book);
+    getImagesAsync(fetchedBooks);
 }

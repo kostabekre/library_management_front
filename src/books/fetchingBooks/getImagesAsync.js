@@ -14,14 +14,16 @@
 
     if (fetchedImages) {
         for (const fetchedImage  of fetchedImages) {
+            const id = new URL(fetchedImage.url).pathname.split('/').pop();
+            const img = document.getElementById('book-image-'+ id)
             if(fetchedImage.status === 404)
             {
+                img.src = "/public/empty_cover.png";
                 continue;
             }
             try {
-                const id = new URL(fetchedImage.url).pathname.split('/').pop();
                 const imageBlob = await fetchedImage.blob();
-                fetchedBooks[id].image = URL.createObjectURL(imageBlob);
+                img.src = URL.createObjectURL(imageBlob);
             } catch (e) {
                 console.error(e.message);
             }

@@ -8,7 +8,7 @@ export function createPublisherTemplate(publisherData) {
     return `<div class="publisher">
         <div class="publisher-img-container">
           <a href="#">
-              <img src="public/person_icon.png" alt="">
+              <img src="public/publishing.png" alt="">
           </a>
         </div>
         <div class="publisher-info">

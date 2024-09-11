@@ -12,7 +12,7 @@
     } catch (e) {
         console.error(e);
     }
-    res.render('author', {
+    res.render('single-author', {
         title: data.details.name,
         author: data
     });

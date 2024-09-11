@@ -8,7 +8,7 @@ export function createBookTemplate(bookData) {
     return `<div class="book">
         <div class="book-img-container">
           <a href="#">
-              <img src="${bookData.image}" alt="">
+              <img src="" alt="" id="book-image-${bookData.id}">
           </a>
         </div>
         <div class="book-info">
