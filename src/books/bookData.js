@@ -11,11 +11,7 @@ export class BookData {
     constructor(id, name, author, image) {
         this.id = id;
         this.name = name;
-        if(author === undefined) {
-            this.author = new ShortAuthorData(1, "NaN");
-        } else {
-            this.author = author;
-        }
+        this.author = author;
         if (image === undefined) {
             this.image = 'public/empty_cover.png';
         } else {

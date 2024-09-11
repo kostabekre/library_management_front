@@ -13,7 +13,7 @@ export function createAuthorTemplate(authorData) {
         </div>
         <div class="author-info">
           <div class="author-info-name">
-            <p><a href="#">${authorData.details.name}</a></p>
+            <p><a href="/authors/${authorData.id}">${authorData.details.name}</a></p>
           </div>
           <div class="author-info-biography">
             <p>${authorData.details.biography}</p>
