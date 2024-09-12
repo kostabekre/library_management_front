@@ -3,6 +3,7 @@ import ejs from "ejs";
 import ViteExpress from "vite-express";
 import {getBookHandler} from "./getBookHandler.js";
 import {getAuthorHandler} from "./getAuthorHandler.js";
+import {getPublisherHandler} from "./getPublisherHandler.js";
 
 const app = express();
 
@@ -20,6 +21,8 @@ app.get('/', function(req, res){
 app.get('/books/:bookId', getBookHandler);
 
 app.get('/authors/:authorId', getAuthorHandler);
+
+app.get('/publishers/:publisherId', getPublisherHandler);
 
 app.get('/authors', function(req, res){
     res.render('authors');
