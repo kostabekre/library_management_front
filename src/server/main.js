@@ -18,6 +18,10 @@ app.get('/', function(req, res){
     res.render('books');
 });
 
+app.get('/login', function(req, res) {
+    res.render('authorization/login')
+});
+
 app.get('/books/:bookId', getBookHandler);
 
 app.get('/authors/:authorId', getAuthorHandler);
