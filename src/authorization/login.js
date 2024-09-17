@@ -6,7 +6,7 @@ async function sendLoginForm() {
         password: userPassword,
     };
     try {
-        const response = await fetch("http://localhost:8080/login?userCookies=true", {
+        const response = await fetch("http://localhost:8080/login?useCookies=true", {
             method: "Post",
             headers: {
                 'Accept': 'application/json',
