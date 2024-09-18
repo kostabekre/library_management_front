@@ -6,12 +6,13 @@ async function sendLoginForm() {
         password: userPassword,
     };
     try {
-        const response = await fetch("http://localhost:8080/login?useCookies=true", {
+        const response = await fetch("http://localhost:8080/login?useSessionCookies=true", {
             method: "Post",
             headers: {
                 'Accept': 'application/json',
                 'Content-type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify(loginData)
         });
         if(!response.ok) {
@@ -19,7 +20,7 @@ async function sendLoginForm() {
             return;
         }
 
-        console.log(await response.json());
+        window.location.replace("/");
 
     } catch (e) {
         console.error(e);

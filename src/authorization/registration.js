@@ -27,7 +27,21 @@ async function OnSubmitClick() {
             console.error("unknown error");
         }
     } else {
-        window.location.replace("/login");
+
+        const loginResponse = await fetch('http://localhost:8080/login?useCookies=true', {
+            method: 'POST',
+            headers: {
+                'accept': 'application/json',
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        });
+        if(!loginResponse.ok)
+        {
+            console.error("unknown error");
+            return;
+        }
+        window.location.replace("/");
     }
 
 
