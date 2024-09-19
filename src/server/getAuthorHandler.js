@@ -1,4 +1,6 @@
-﻿export async function getAuthorHandler(req, res) {
+﻿import {userInfoCollector} from "./userInfoCollector.js";
+
+export async function getAuthorHandler(req, res) {
     const url = "http://localhost:8080/api/authors/" + req.params.authorId;
     let data;
     try {
@@ -14,7 +16,8 @@
     }
     res.render('single-author', {
         title: data.details.name,
-        author: data
+        author: data,
+        userInfo: userInfoCollector(req),
     });
 
     return res;

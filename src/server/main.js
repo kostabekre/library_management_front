@@ -1,29 +1,33 @@
 ﻿import express from "express";
-import ejs from "ejs";
 import ViteExpress from "vite-express";
 import {getBookHandler} from "./getBookHandler.js";
 import {getAuthorHandler} from "./getAuthorHandler.js";
 import {getPublisherHandler} from "./getPublisherHandler.js";
+import {userInfoCollector} from "./userInfoCollector.js";
 
 const app = express();
 
-
-app.engine('.html', ejs.__express);
-
-app.set('view engine', '.html');
+app.set('view engine', '.ejs');
 
 app.use('/public', express.static('public'));
 
 app.get('/', function(req, res){
-    res.render('books');
+    const userInfo = userInfoCollector(req);
+    res.render('books/books', {
+        userInfo: userInfo
+    });
 });
 
 app.get('/login', function(req, res) {
-    res.render('authorization/login')
+    res.render('authorization/login', {
+        userInfo: userInfoCollector(req),
+    })
 });
 
 app.get('/registration', function(req, res) {
-    res.render('authorization/registration')
+    res.render('authorization/registration', {
+        userInfo: userInfoCollector(req),
+    })
 });
 
 app.get('/books/:bookId', getBookHandler);
@@ -33,11 +37,15 @@ app.get('/authors/:authorId', getAuthorHandler);
 app.get('/publishers/:publisherId', getPublisherHandler);
 
 app.get('/authors', function(req, res){
-    res.render('authors');
+    res.render('authors', {
+        userInfo: userInfoCollector(req)
+    });
 });
 
 app.get('/publishers', function(req, res){
-    res.render('publishers');
+    res.render('publishers', {
+        userInfo: userInfoCollector(req),
+    });
 });
 
 ViteExpress.listen(app, 3000, () =>

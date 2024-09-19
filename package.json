@@ -10,7 +10,7 @@
     "build": "vite build"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1",
+    "nodemon": "^3.1.4",
     "vite": "^5.0.2"
   },
   "dependencies": {

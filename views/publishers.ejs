@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <title>publishers</title>
-    <%- include ('head.html') -%>
+    <%- include ('head.ejs') -%>
     <link rel="stylesheet" href="/css/publishers.css">
 </head>
 <body>
-    <%- include ('header.html') -%>
+    <%- include ('header/header.ejs') -%>
     <div class="content">
-        <%- include ('content-search.html') -%>
+        <%- include ('content-search.ejs') -%>
         <div class="publishers-container" id="publishers-container"></div>
     </div>
-    <%- include ('footer.html') -%>
+    <%- include ('footer.ejs') -%>
     <script type="module" src="/src/publishers/fetchingPublishers/fetchPublishers.js"></script>
 </body>
 </html>

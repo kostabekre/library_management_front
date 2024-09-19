@@ -3,18 +3,18 @@
 <head>
   <title>Authors</title>
   <link rel="stylesheet" href="../css/authors.css">
-  <%- include('head.html') -%>
+  <%- include('head.ejs') -%>
 </head>
 <body>
-<%- include('header.html') -%>
+<%- include('header/header.ejs') -%>
 <main>
   <div class="content">
-    <%- include('content-search.html') -%>
+    <%- include('content-search.ejs') -%>
     <div class="authors-container" id="authors-container"></div>
   </div>
 </main>
 
-<%- include('footer.html') -%>
+<%- include('footer.ejs') -%>
 <script type="module" src="../src/authors/fetchingAuthors/fetchAuthors.js"></script>
 </body>
 </html>

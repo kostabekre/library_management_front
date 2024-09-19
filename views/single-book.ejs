@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title><%= title %></title>
-    <%- include('head.html') -%>
+    <%- include('head.ejs') -%>
     <link rel="stylesheet" href="../css/single-book.css">
 </head>
 <body>
-    <%- include('header.html') %>
+    <%- include('header/header.ejs', {userInfo: userInfo}) %>
 
     <div class="content">
         <div class="single-book-wrapper">
@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <%- include('footer.html') -%>
+    <%- include('footer.ejs') -%>
 
     <script type="module">
         const uriCover = "http://127.0.0.1:8080/api/books/cover/";

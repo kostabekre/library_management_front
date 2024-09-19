@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title><%= title %></title>
-    <%- include('head.html') -%>
+    <%- include('head.ejs') -%>
     <link rel="stylesheet" href=../css/books.css>
     <link rel="stylesheet" href=../css/single-publisher.css>
 </head>
 <body>
-    <%- include('header.html') %>
+    <%- include('header/header.ejs') %>
 
     <div class="content">
-        <%- include ('content-search.html') -%>
+        <%- include ('content-search.ejs') -%>
         <div class="publisher-title">
             <input type="hidden" id="publisher-id" value="<%= publisher.id %>" >
             <div class="publisher-title-name">
@@ -24,7 +24,7 @@
         <div class="content-books-container" id="books-container"></div>
     </div>
 
-    <%- include('footer.html') -%>
+    <%- include('footer.ejs') -%>
     <script type="module" src="../src/books/fetchingBooks/fetchAllBooksByPublisher.js"></script>
 </body>
 </html>
