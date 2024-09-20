@@ -1,25 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Books</title>
-    <link rel="stylesheet" href="../../css/books.css">
-    <%- include('../head.ejs') -%>
-</head>
-<body>
-<%- include('../header/header.ejs', {userInfo: userInfo}) -%>
-
-<main>
-    <div class="content">
-        <%- include ('../content-search.ejs') -%>
-        <% if(userInfo.IsLoggedIn) { %>
-            <div class="book-control">
-                <a href="/books/add">Add book</a>
-            </div>
-        <% } %>
-        <div class="content-books-container" id="books-container"></div>
+<% if(userInfo.IsLoggedIn) { %>
+    <div class="book-control">
+        <a href="/books/add">Add book</a>
     </div>
-</main>
-<%- include('../footer.ejs') -%>
+<% } %>
+<div class="content-books-container" id="books-container"></div>
 <script type="module" src="../../src/books/fetchingBooks/fetchAllBooks.js"></script>
-</body>
-</html>

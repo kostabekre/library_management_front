@@ -8,7 +8,9 @@ export async function getBookHandler(req, res) {
     try {
         const response = await fetch(url);
         if(!response.ok) {
-            res.render('not-found');
+            res.render('not-found', {
+                userInfo: userInfoCollector(req)
+            });
             return;
         }
 
@@ -18,7 +20,7 @@ export async function getBookHandler(req, res) {
         return;
     }
     data = new FullBookInfo(data, req.acceptsLanguages()[0]);
-    res.render('single-book', {
+    res.render('books/single-book', {
         title: data.name,
         book: data,
         userInfo: userInfoCollector(req),

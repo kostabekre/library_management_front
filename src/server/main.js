@@ -4,10 +4,14 @@ import {getBookHandler} from "./getBookHandler.js";
 import {getAuthorHandler} from "./getAuthorHandler.js";
 import {getPublisherHandler} from "./getPublisherHandler.js";
 import {userInfoCollector} from "./userInfoCollector.js";
+import expressLayouts from "express-ejs-layouts";
 
 const app = express();
 
 app.set('view engine', '.ejs');
+app.set('layout', '../layouts/layout');
+
+app.use(expressLayouts);
 
 app.use('/public', express.static('public'));
 
@@ -37,13 +41,13 @@ app.get('/authors/:authorId', getAuthorHandler);
 app.get('/publishers/:publisherId', getPublisherHandler);
 
 app.get('/authors', function(req, res){
-    res.render('authors', {
+    res.render('authors/authors', {
         userInfo: userInfoCollector(req)
     });
 });
 
 app.get('/publishers', function(req, res){
-    res.render('publishers', {
+    res.render('publishers/publishers', {
         userInfo: userInfoCollector(req),
     });
 });

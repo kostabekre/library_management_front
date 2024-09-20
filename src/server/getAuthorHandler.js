@@ -6,7 +6,9 @@ export async function getAuthorHandler(req, res) {
     try {
         const response = await fetch(url);
         if(!response.ok) {
-            res.render('not-found');
+            res.render('not-found', {
+                userInfo: userInfoCollector(req)
+            });
             return;
         }
 
@@ -14,7 +16,7 @@ export async function getAuthorHandler(req, res) {
     } catch (e) {
         console.error(e);
     }
-    res.render('single-author', {
+    res.render('authors/single-author', {
         title: data.details.name,
         author: data,
         userInfo: userInfoCollector(req),

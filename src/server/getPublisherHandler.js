@@ -6,7 +6,9 @@ export async function getPublisherHandler(req, res) {
     try {
         const response = await fetch(url);
         if(!response.ok) {
-            res.render('not-found');
+            res.render('not-found', {
+                userInfo: userInfoCollector(req)
+            });
             return;
         }
 
@@ -14,7 +16,7 @@ export async function getPublisherHandler(req, res) {
     } catch (e) {
         console.error(e);
     }
-    res.render('single-publisher', {
+    res.render('publishers/single-publisher', {
         title: data.details.name,
         publisher: data,
         userInfo: userInfoCollector(req),
