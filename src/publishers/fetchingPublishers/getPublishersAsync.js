@@ -13,7 +13,7 @@ export async function getPublishersAsync() {
         const json = await response.json();
         let result = {};
         for (let publisher of json) {
-            result[publisher.id] = new PublisherData(publisher.id, publisher.details);
+            result[publisher.id] = new PublisherData(publisher);
         }
         return result;
     } catch (error) {

@@ -22,6 +22,9 @@ app.get('/', function(req, res){
     });
 });
 
+app.get('/books/:bookId', getBookHandler);
+
+
 app.get('/login', function(req, res) {
     res.render('authorization/login', {
         userInfo: userInfoCollector(req),
@@ -33,8 +36,6 @@ app.get('/registration', function(req, res) {
         userInfo: userInfoCollector(req),
     })
 });
-
-app.get('/books/:bookId', getBookHandler);
 
 app.get('/authors/:authorId', getAuthorHandler);
 

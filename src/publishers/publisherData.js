@@ -4,7 +4,7 @@
      * @param id {number}
      * @param details {PublisherDetails}
      */
-    constructor(id, details) {
+    constructor({id, details}) {
         this.id = id;
         this.details = details
     }

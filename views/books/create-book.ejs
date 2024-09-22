@@ -1,0 +1,59 @@
+<form>
+    <div>
+        <label for="book-name">Name</label>
+        <input type="text" id="book-name">
+    </div>
+    <div>
+        <label for="book-isbn">Isbn</label>
+        <input type="text" id="book-isbn">
+    </div>
+    <div>
+        <label for="book-publisher">Publisher</label>
+        <select name="book-publisher" id="book-publisher"></select>
+    </div>
+    <div>
+        <label for="book-amount">Amount</label>
+        <input type="number" id="book-amount">
+    </div>
+    <div>
+        <label for="book-rating">Rating</label>
+        <input type="number" id="book-rating">
+    </div>
+    <div>
+        <label for="book-published">Published</label>
+        <input type="date" id="book-published">
+    </div>
+</form>
+
+<script type="module">
+    import {PublisherData} from "../../src/publishers/publisherData.js";
+
+    const publisherDropdown = document.getElementById('book-publisher');
+    const defaultOption = new Option("Select publisher", null, true, true);
+    defaultOption.disabled = true;
+    publisherDropdown.add(defaultOption);
+    FillDropdown(publisherDropdown)
+
+    async function FillDropdown(publisherDropdown) {
+        try {
+            const response = await fetch("http://localhost:8080/api/publishers/");
+            if(!response.ok) {
+                console.warn("Couldn't not fetch publishers");
+                return;
+            }
+            const json = await response.json();
+            json.forEach(publisherData => {
+                const publisher = new PublisherData(publisherData);
+                const newOption = new Option(publisher.details.name, publisher.id.toString())
+                publisherDropdown.add(newOption);
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+</script>
+
+<script type="module">
+
+</script>

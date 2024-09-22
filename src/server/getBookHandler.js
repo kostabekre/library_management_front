@@ -2,6 +2,14 @@
 import {userInfoCollector} from "./userInfoCollector.js";
 
 export async function getBookHandler(req, res) {
+    if(req.params.bookId === 'create') {
+        res.render('books/create-book', {
+            userInfo: userInfoCollector(req)
+        })
+
+        return;
+    }
+
     const url = "http://localhost:8080/api/books/" + req.params.bookId;
 
     let data;
