@@ -2,10 +2,10 @@
     /**
      *
      * @param id {number}
-     * @param name {string}
+     * @param details {GenreDetails}
      */
-    constructor(id, name) {
-        this.name = name;
+    constructor({id, details}) {
+        this.details = details;
         this.id = id;
     }
 }

@@ -13,7 +13,7 @@ export async function getAuthorsAsync() {
         const json = await response.json();
         let result = {};
         for (let author of json) {
-            result[author.id] = new AuthorData(author.id, author.details);
+            result[author.id] = new AuthorData(author);
         }
         return result;
     } catch (error) {
