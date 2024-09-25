@@ -9,30 +9,50 @@ async function sendBook() {
     const sendData = {
         name: formData.get("name"),
         isbn: formData.get("isbn"),
-        authorsId: [formData.get("book-author-1")],
-        publisherId: formData.get("publisherId"),
+        authorsId: [Number(formData.get("book-author-1"))],
+        publisherId: Number(formData.get("publisherId")),
         bookAmount: formData.get("bookAmount"),
         bookRating: formData.get("bookRating"),
         datePublished: formData.get("datePublished"),
-        genresId: formData.get("genresId"),
+        genresId: [Number(formData.get("book-genre-1"))],
     }
+    const errors = [];
     for(const [key, value] of Object.entries(sendData)) {
         if(value == null) {
-            console.error(`${key} is null`)
+            errors.push(`${key} is null`);
         }
     }
-    return;
+    if(errors.length > 0) {
+        errors.forEach(error => {
+            console.error(error);
+        })
+        return;
+    }
+
     try {
-        const response = await fetch("https://localhost:8080/api/books", {
+        const response = await fetch("http://localhost:8080/api/books", {
             method: "POST",
-            body: JSON.stringify({})
+            body: JSON.stringify(sendData),
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+            },
+            credentials: 'include',
         });
-        if(response.ok) {
-            window.location.replace("/");
+        if(!response.ok) {
+            const errorsDiv = document.getElementById("errors");
+            errorsDiv.innerHTML = "";
+            const ulElement = document.createElement('ul');
+            errorsDiv.appendChild(ulElement);
+            const errorData = await response.json();
+            Object.values(errorData.errors).forEach(error => {
+                const li = document.createElement("li");
+                li.appendChild(document.createTextNode(error));
+                ulElement.appendChild(li)
+            })
             return;
         }
-        const json = await response.json();
-        console.error(json);
+        window.location.replace("/");
     } catch (e) {
         console.error(e);
     }
