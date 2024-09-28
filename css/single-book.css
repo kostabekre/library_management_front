@@ -47,6 +47,8 @@
 .single-book-img-container {
     padding: 0 15px;
     justify-self: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .single-book-img-container img {

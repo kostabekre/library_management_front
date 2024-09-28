@@ -1,8 +1,11 @@
-import CreateBookModel from "./createBookModel.js";
-
-export default class UpdateBookModel extends CreateBookModel {
-    constructor(id, props) {
-        super(props);
-        this.id = id;
+export default class UpdateBookModel {
+    /**
+     *
+     * @param name {string}
+     * @param gendesId {Array<number>}
+     */
+    constructor(name, gendesId) {
+        this.name = name;
+        this.genresId = gendesId;
     }
 }

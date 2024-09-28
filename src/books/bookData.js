@@ -1,4 +1,4 @@
-﻿import {ShortAuthorData} from "./ShortAuthorData.js";
+﻿import {ShortAuthorData} from "../authors/ShortAuthorData.js";
 
 export class BookData {
     /**

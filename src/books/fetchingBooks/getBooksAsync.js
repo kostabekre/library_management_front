@@ -1,5 +1,5 @@
 ﻿import {BookData} from "../bookData.js";
-import {ShortAuthorData} from "../ShortAuthorData.js";
+import {ShortAuthorData} from "../../authors/ShortAuthorData.js";
 
 export async function getBooksAsync(uri) {
     try {

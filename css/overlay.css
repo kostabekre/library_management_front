@@ -1,0 +1,43 @@
+#overlay-wrapper {
+    display: none;
+    position: fixed;
+    height: 180px;
+    width: 500px;
+    margin-left: -250px;
+    background: black;
+    color: white;
+    left: 50%;
+    top: 30%;
+    z-index: 20;
+}
+
+#overlay-wrapper:after {
+    position: fixed;
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.overlay-content {
+    display: grid;
+    height: 180px;
+    grid-template-columns: 1fr 1fr;
+    border: aqua 1px solid;
+}
+
+.upload-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-confirm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

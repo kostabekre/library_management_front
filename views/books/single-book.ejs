@@ -21,6 +21,9 @@
     </div>
     <div class="single-book-img-container">
         <img src="" alt="" id="book-img">
+        <% if(userInfo.IsLoggedIn) { %>
+            <button type="button" id="update-cover-btn">Update Cover</button>
+        <% } %>
     </div>
     <div class="single-book-info-short-description">
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
@@ -49,22 +52,17 @@
     </div>
 </div>
 
-<script type="module">
-    const uriCover = "http://127.0.0.1:8080/api/books/cover/";
-    const bookIdEl = document.getElementById("book-id");
-    const imageEl = document.getElementById("book-img");
-    let image;
-    try {
-        const response = await fetch(uriCover + bookIdEl.value);
-        if(!response.ok) {
-            image = "/public/empty_cover.png";
-        } else {
-            const blob = await response.blob();
-            image = URL.createObjectURL(blob);
-        }
-    } catch (e) {
-        console.error(e);
-    }
+<div id="overlay-wrapper">
+    <div class="overlay-content">
+        <div class="upload-button">
+            <p>Upload an image!</p>
+            <button type="button">Upload</button>
+        </div>
+        <div class="upload-confirm">
+            <button type="button">Confirm</button>
+        </div>
+    </div>
+</div>
 
-    imageEl.src = image;
-</script>
+<script type="module" src="/src/books/loadSingleBookImage.js"></script>
+<script type="module" src="/src/books/showUpdateImagePanel.js"></script>
