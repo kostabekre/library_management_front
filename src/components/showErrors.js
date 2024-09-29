@@ -1,10 +1,11 @@
 /**
  *
+ * @param id {string}
  * @param errors {Array}
  */
-export default function showErrors(errors)
+export default function showErrors(id ,errors)
 {
-    const errorsDiv = document.getElementById("errors");
+    const errorsDiv = document.getElementById(id);
     errorsDiv.innerHTML = "";
     const ulElement = document.createElement('ul');
     errorsDiv.appendChild(ulElement);

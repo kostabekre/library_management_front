@@ -2,7 +2,7 @@
 import showErrors from "../../components/showErrors.js";
 
 const button = document.getElementById("book-create-btn");
-button.addEventListener("click", (e) => {
+button.addEventListener("click", () => {
     sendBook();
 })
 
@@ -12,7 +12,7 @@ async function sendBook() {
     const errors = validate(sendData);
 
     if(errors.length > 0) {
-        showErrors(errors);
+        showErrors("errors", errors);
         return;
     }
 
@@ -28,7 +28,7 @@ async function sendBook() {
         });
         if(!response.ok) {
             const errorData = await response.json();
-            showErrors(Object.values(errorData.errors));
+            showErrors("errors", Object.values(errorData.errors));
             return;
         }
         window.location.replace("/");

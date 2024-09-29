@@ -54,14 +54,18 @@
 
 <div id="overlay-wrapper">
     <div class="overlay-content">
+        <div class="file-upload-close-wrapper">
+            <button type="button" id="file-upload-close">x</button>
+        </div>
         <div class="upload-button">
-            <p>Upload an image!</p>
-            <button type="button">Upload</button>
+            <label for="new-cover-file" id="file-upload-label" class="file-upload-label">Select an image</label>
+            <input type="file" id="new-cover-file" accept="image/png, image/jpg">
         </div>
         <div class="upload-confirm">
-            <button type="button">Confirm</button>
+            <button type="button" id="new-cover-confirm-btn">Confirm</button>
         </div>
     </div>
+    <div class="upload-errors" id="upload-errors"></div>
 </div>
 
 <script type="module" src="/src/books/loadSingleBookImage.js"></script>
