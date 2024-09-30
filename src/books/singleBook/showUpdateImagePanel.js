@@ -1,5 +1,5 @@
 import updateCover from "./loadSingleBookImage.js";
-import showErrors from "../components/showErrors.js";
+import showErrors from "../../components/showErrors.js";
 
 /** @type {HTMLButtonElement} */
 const btn = document.getElementById('update-cover-btn');

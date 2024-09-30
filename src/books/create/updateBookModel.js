@@ -2,10 +2,14 @@ export default class UpdateBookModel {
     /**
      *
      * @param name {string}
-     * @param gendesId {Array<number>}
+     * @param genresId {Array<number>}
+     * @param amount {number}
+     * @param bookRating {number}
      */
-    constructor(name, gendesId) {
+    constructor({name, genresId, bookAmount, bookRating}) {
         this.name = name;
-        this.genresId = gendesId;
+        this.bookAmount = bookAmount;
+        this.bookRating = bookRating
+        this.genresId = genresId;
     }
 }

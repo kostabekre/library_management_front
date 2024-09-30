@@ -13,11 +13,11 @@
     grid-column-end: 4;
 }
 
-.single-book-title-name {
-    font-size: 2.5em;
+.single-book-title-name-wrapper {
 }
 
-.single-book-title-name p {
+#book-title-name {
+    font-size: 2.5em;
     margin: 0;
 }
 

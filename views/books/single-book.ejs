@@ -8,8 +8,18 @@
                 <% }); %>
             </ul>
         </div>
-        <div class="single-book-title-name">
-            <p><%= book.name %></p>
+        <div class="single-book-title-name-wrapper">
+            <div id="title-name-view">
+                <span id="book-title-name"><%= book.name %></span>
+                <% if(userInfo.IsLoggedIn) { %>
+                <button type="button" id="change-name-btn">E</button>
+                <% } %>
+            </div>
+            <div id="title-name-edit">
+                <label for="new-name-input"></label>
+                <input type="text" id="new-name-input">
+                <button type="button" id="save-changed-name-btn">S</button>
+            </div>
         </div>
         <div class="single-book-title-authors">
             <ul>
@@ -68,5 +78,6 @@
     <div class="upload-errors" id="upload-errors"></div>
 </div>
 
-<script type="module" src="/src/books/loadSingleBookImage.js"></script>
-<script type="module" src="/src/books/showUpdateImagePanel.js"></script>
+<script type="module" src="/src/books/singleBook/loadSingleBookImage.js"></script>
+<script type="module" src="/src/books/singleBook/showUpdateImagePanel.js"></script>
+<script type="module" src="/src/books/singleBook/updateBookName.js"></script>
