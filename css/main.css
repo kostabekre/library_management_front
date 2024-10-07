@@ -23,5 +23,10 @@
 
 .context-search-input {
     display: flex;
+    justify-items: center;
     gap: 5px;
+}
+
+.context-search-input form {
+    margin: 0;
 }
