@@ -1,4 +1,8 @@
-﻿<div class="single-book-wrapper">
+﻿<%- include('../head.ejs') -%>
+<%- include('../header.ejs') -%>
+<%- include('../content-search.ejs') -%>
+
+<div class="single-book-wrapper">
     <input type="hidden" id="book-id" value="<%= book.id %>" >
     <div class="single-book-title">
         <div class="single-book-title-genres">
@@ -81,3 +85,5 @@
 <script type="module" src="/src/books/singleBook/loadSingleBookImage.js"></script>
 <script type="module" src="/src/books/singleBook/showUpdateImagePanel.js"></script>
 <script type="module" src="/src/books/singleBook/updateBookName.js"></script>
+
+<%- include('../footer.ejs') -%>

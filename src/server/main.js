@@ -4,14 +4,11 @@ import {getBookHandler} from "./getBookHandler.js";
 import {getAuthorHandler} from "./getAuthorHandler.js";
 import {getPublisherHandler} from "./getPublisherHandler.js";
 import {userInfoCollector} from "./userInfoCollector.js";
-import expressLayouts from "express-ejs-layouts";
 
 const app = express();
 
 app.set('view engine', '.ejs');
 app.set('layout', '../layouts/layout');
-
-app.use(expressLayouts);
 
 app.use('/public', express.static('public'));
 
