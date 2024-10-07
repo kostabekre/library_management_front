@@ -1,11 +1,20 @@
-﻿<div class="publisher-title">
-    <input type="hidden" id="publisher-id" value="<%= publisher.id %>" >
-    <div class="publisher-title-name">
-        <p><%= publisher.details.name %></p>
+﻿<%- include('../head.ejs') -%>
+<%- include('../header.ejs') -%>
+<%- include('../content-search.ejs') -%>
+
+<div class="content">
+    <div class="publisher-title">
+        <input type="hidden" id="publisher-id" value="<%= publisher.id %>" >
+        <div class="publisher-title-name">
+            <p><%= publisher.details.name %></p>
+        </div>
+        <div class="publisher-title-address">
+            <p><%= publisher.details.address %></p>
+        </div>
     </div>
-    <div class="publisher-title-address">
-        <p><%= publisher.details.address %></p>
-    </div>
+    <div class="content-books-container" id="books-container"></div>
 </div>
-<div class="content-books-container" id="books-container"></div>
+
 <script type="module" src="../../src/books/fetchingBooks/fetchAllBooksByPublisher.js"></script>
+
+<%- include('../footer.ejs') -%>
