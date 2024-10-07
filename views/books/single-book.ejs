@@ -1,74 +1,70 @@
-﻿<%- include('../head.ejs') -%>
-<%- include('../header.ejs') -%>
-<%- include('../content-search.ejs') -%>
-
-<div class="content">
-    <div class="single-book-wrapper">
-        <input type="hidden" id="book-id" value="<%= book.id %>" >
-        <div class="single-book-title">
-            <div class="single-book-title-genres">
-                <ul>
-                    <% book.genres.forEach(function (genre) {  %>
-                        <li><%= genre.details.name %></li>
-                    <% }); %>
-                </ul>
+﻿<div class="single-book-wrapper">
+    <input type="hidden" id="book-id" value="<%= book.id %>" >
+    <div class="single-book-title">
+        <div class="single-book-title-genres">
+            <ul>
+                <% book.genres.forEach(function (genre) {  %>
+                    <li><%= genre.details.name %></li>
+                <% }); %>
+            </ul>
+        </div>
+        <div class="single-book-title-name-wrapper">
+            <div id="title-name-view">
+                <span id="book-title-name"><%= book.name %></span>
+                <% if(userInfo.IsLoggedIn) { %>
+                    <button type="button" id="change-name-btn">E</button>
+                    <button type="button" id="remove-book-btn">R</button>
+                <% } %>
             </div>
-            <div class="single-book-title-name-wrapper">
-                <div id="title-name-view">
-                    <span id="book-title-name"><%= book.name %></span>
-                    <% if(userInfo.IsLoggedIn) { %>
-                        <button type="button" id="change-name-btn">E</button>
-                    <% } %>
-                </div>
-                <div id="title-name-edit">
-                    <label for="new-name-input"></label>
-                    <input type="text" id="new-name-input">
-                    <button type="button" id="save-changed-name-btn">S</button>
-                </div>
-            </div>
-            <div class="single-book-title-authors">
-                <ul>
-                    <% book.authors.forEach(function (author) {  %>
-                        <li><a class="title-author-link" href="/authors/<%= author.id %>"><%= author.details.name %></a></li>
-                    <% }); %>
-                </ul>
+            <div id="title-name-edit">
+                <label for="new-name-input"></label>
+                <input type="text" id="new-name-input">
+                <button type="button" id="save-changed-name-btn">S</button>
             </div>
         </div>
-        <div class="single-book-img-container">
-            <img src="" alt="" id="book-img">
-            <% if(userInfo.IsLoggedIn) { %>
-                <button type="button" id="update-cover-btn">Update Cover</button>
-            <% } %>
+        <div class="single-book-title-authors">
+            <ul>
+                <% book.authors.forEach(function (author) {  %>
+                    <li><a class="title-author-link" href="/authors/<%= author.id %>"><%= author.details.name %></a></li>
+                <% }); %>
+            </ul>
         </div>
-        <div class="single-book-info-short-description">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+    <div class="single-book-img-container">
+        <img src="" alt="" id="book-img">
+        <% if(userInfo.IsLoggedIn) { %>
+            <button type="button" id="update-cover-btn">Update Cover</button>
+        <% } %>
+    </div>
+    <div class="single-book-info-short-description">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+    <div class="single-book-info">
+        <div class="single-book-info-item">
+            <span class="item-title">ISBN</span>
+            <span class="item-value"><%= book.isbn %></span>
         </div>
-        <div class="single-book-info">
-            <div class="single-book-info-item">
-                <span class="item-title">ISBN</span>
-                <span class="item-value"><%= book.isbn %></span>
-            </div>
-            <div class="single-book-info-item">
-                <span class="item-title">Publisher</span>
-                <span class="item-value"><a href="/publishers/<%= book.publisher.id %>"><%= book.publisher.details.name %></a></span>
-            </div>
-            <div class="single-book-info-item">
-                <span class="item-title">Amount</span>
-                <span class="item-value"><%= book.bookAmount %></span>
-            </div>
-            <div class="single-book-info-item">
-                <span class="item-title">Rating</span>
-                <span class="item-value"><%= book.bookRating %></span>
-            </div>
-            <div class="single-book-info-item">
-                <span class="item-title">Published</span>
-                <span class="item-value"><%= book.datePublished  %></span>
-            </div>
+        <div class="single-book-info-item">
+            <span class="item-title">Publisher</span>
+            <span class="item-value"><a href="/publishers/<%= book.publisher.id %>"><%= book.publisher.details.name %></a></span>
+        </div>
+        <div class="single-book-info-item">
+            <span class="item-title">Amount</span>
+            <span class="item-value"><%= book.bookAmount %></span>
+        </div>
+        <div class="single-book-info-item">
+            <span class="item-title">Rating</span>
+            <span class="item-value"><%= book.bookRating %></span>
+        </div>
+        <div class="single-book-info-item">
+            <span class="item-title">Published</span>
+            <span class="item-value"><%= book.datePublished  %></span>
         </div>
     </div>
 </div>
 
-<div id="overlay-wrapper">
+
+<div id="update-cover-overlay-wrapper" class="overlay-wrapper">
     <div class="overlay-content">
         <div class="file-upload-close-wrapper">
             <button type="button" id="file-upload-close">x</button>
@@ -84,8 +80,16 @@
     <div class="upload-errors" id="upload-errors"></div>
 </div>
 
+<div id="remove-book-overlay-wrapper" class="overlay-wrapper">
+    <div class="overlay-content">
+        <span class="overlay-content-warning">Remove the book?</span>
+        <button type="button" id="remove-book-yes-btn">Yes</button>
+        <button type="button" id="remove-book-no-btn">No</button>
+    </div>
+    <div class="upload-errors" id="remove-book-errors"></div>
+</div>
+
 <script type="module" src="/src/books/singleBook/loadSingleBookImage.js"></script>
 <script type="module" src="/src/books/singleBook/showUpdateImagePanel.js"></script>
 <script type="module" src="/src/books/singleBook/updateBookName.js"></script>
-
-<%- include('../footer.ejs') -%>
+<script type="module" src="/src/books/singleBook/removeBookBtn.js"></script>

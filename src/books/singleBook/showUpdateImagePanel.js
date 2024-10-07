@@ -8,7 +8,7 @@ const closeBtn = document.getElementById('file-upload-close');
 const newCoverFileBtn = document.getElementById('new-cover-file');
 
 btn.addEventListener('click', () => {
-  const overlayContent = document.getElementById('overlay-wrapper');
+  const overlayContent = document.getElementById('update-cover-overlay-wrapper');
   overlayContent.style.display = 'block';
 });
 
@@ -26,7 +26,7 @@ newCoverFileBtn.addEventListener('change', (event) => {
 
 function hideOverlay()
 {
-    const overlayContent = document.getElementById('overlay-wrapper');
+    const overlayContent = document.getElementById('update-cover-overlay-wrapper');
     overlayContent.style.display = 'none';
     const errorsDiv = document.getElementById('upload-errors');
     errorsDiv.innerHTML = '';

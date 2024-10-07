@@ -2,6 +2,15 @@
 import {FullBookInfo} from "../books/fullBookInfo.js";
 
 export default async function updateBookHandler(req, res) {
+    const userInfo = userInfoCollector(req);
+
+    if(userInfo.IsLoggedIn === false) {
+        res.render('not-found', {
+            userInfo: userInfo
+        });
+        return;
+    }
+
     const url = "http://localhost:8080/api/books/" + req.params.bookId;
 
     let data;
@@ -9,7 +18,7 @@ export default async function updateBookHandler(req, res) {
         const response = await fetch(url);
         if(!response.ok) {
             res.render('not-found', {
-                userInfo: userInfoCollector(req)
+                userInfo: userInfo
             });
             return;
         }
@@ -25,7 +34,7 @@ export default async function updateBookHandler(req, res) {
     res.render('books/update-book', {
         title: data.name,
         book: data,
-        userInfo: userInfoCollector(req),
+        userInfo: userInfo,
     });
 
     return res;

@@ -1,4 +1,4 @@
-#overlay-wrapper {
+.overlay-wrapper {
     display: none;
     position: fixed;
     height: 180px;
@@ -11,7 +11,7 @@
     z-index: 20;
 }
 
-#overlay-wrapper:before {
+.overlay-wrapper:before {
     position: fixed;
     content: "";
     top: 0;
@@ -22,7 +22,7 @@
     z-index: -1;
 }
 
-#overlay-wrapper:after {
+.overlay-wrapper:after {
     position: absolute;
     content: "";
     top: 0;
@@ -39,7 +39,7 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 15px auto;
     grid-template-areas:
-            ". header"
+            "warning header"
             "upload confirm";
 }
 
@@ -48,6 +48,20 @@
     display: flex;
     align-items: end;
     justify-content: center;
+}
+
+#remove-book-yes-btn {
+    grid-area: upload;
+    color: red;
+}
+
+#remove-book-no-btn {
+    grid-area: confirm;
+    color: green;
+}
+
+.overlay-content-warning {
+    grid-area: warning;
 }
 
 .upload-confirm {
