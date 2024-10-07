@@ -54,7 +54,14 @@
         </div>
         <div class="single-book-info-item">
             <span class="item-title">Rating</span>
-            <span class="item-value"><%= book.bookRating %></span>
+            <input type="hidden" id="book-selected-rating" value="<%= book.bookRating %>" >
+            <span class="item-value">
+                <span id="star-1" class="star">★</span>
+                <span id="star-2" class="star">★</span>
+                <span id="star-3" class="star">★</span>
+                <span id="star-4" class="star">★</span>
+                <span id="star-5" class="star">★</span>
+            </span>
         </div>
         <div class="single-book-info-item">
             <span class="item-title">Published</span>
@@ -93,3 +100,4 @@
 <script type="module" src="/src/books/singleBook/showUpdateImagePanel.js"></script>
 <script type="module" src="/src/books/singleBook/updateBookName.js"></script>
 <script type="module" src="/src/books/singleBook/removeBookBtn.js"></script>
+<script type="module" src="/src/books/singleBook/starReview.js"></script>

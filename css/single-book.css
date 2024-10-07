@@ -75,3 +75,11 @@
 #remove-book-btn {
     color: red;
 }
+
+.star:hover {
+    cursor: pointer;
+}
+
+.selected-star {
+    color: blue;
+}
