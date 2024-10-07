@@ -2,44 +2,46 @@
 <%- include('../header.ejs') -%>
 <%- include('../content-search.ejs') -%>
 
-<form id="book-create-form">
-    <div>
-        <label for="book-name">Name</label>
-        <input type="text" id="book-name" name="name">
+<div class="content">
+    <form id="book-create-form">
+        <div>
+            <label for="book-name">Name</label>
+            <input type="text" id="book-name" name="name">
+        </div>
+        <div>
+            <label for="book-isbn">Isbn</label>
+            <input type="text" id="book-isbn" name="isbn">
+        </div>
+        <div id="authors-select-area">
+            <label for="book-author-1">Author</label>
+            <select name="book-author-1" id="book-author-1"></select>
+        </div>
+        <div>
+            <label for="book-publisher">Publisher</label>
+            <select name="publisherId" id="book-publisher"></select>
+        </div>
+        <div>
+            <label for="book-genre-1">Genres</label>
+            <select name="book-genre-1" id="book-genre-1"></select>
+        </div>
+        <div>
+            <label for="book-amount">Amount</label>
+            <input type="number" id="book-amount" name="bookAmount">
+        </div>
+        <div>
+            <label for="book-rating">Rating</label>
+            <input type="number" id="book-rating" name="bookRating">
+        </div>
+        <div>
+            <label for="book-published">Published</label>
+            <input type="date" id="book-published" name="datePublished">
+        </div>
+        <div>
+            <button type="button" id="book-create-btn">Create</button>
+        </div>
+    </form>
+    <div id="errors">
     </div>
-    <div>
-        <label for="book-isbn">Isbn</label>
-        <input type="text" id="book-isbn" name="isbn">
-    </div>
-    <div id="authors-select-area">
-        <label for="book-author-1">Author</label>
-        <select name="book-author-1" id="book-author-1"></select>
-    </div>
-    <div>
-        <label for="book-publisher">Publisher</label>
-        <select name="publisherId" id="book-publisher"></select>
-    </div>
-    <div>
-        <label for="book-genre-1">Genres</label>
-        <select name="book-genre-1" id="book-genre-1"></select>
-    </div>
-    <div>
-        <label for="book-amount">Amount</label>
-        <input type="number" id="book-amount" name="bookAmount">
-    </div>
-    <div>
-        <label for="book-rating">Rating</label>
-        <input type="number" id="book-rating" name="bookRating">
-    </div>
-    <div>
-        <label for="book-published">Published</label>
-        <input type="date" id="book-published" name="datePublished">
-    </div>
-    <div>
-        <button type="button" id="book-create-btn">Create</button>
-    </div>
-</form>
-<div id="errors">
 </div>
 
 <script src="../../src/authors/fillAuthorsDropdown.js" type="module"></script>

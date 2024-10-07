@@ -2,16 +2,19 @@
 <%- include('../header.ejs') -%>
 <%- include('../content-search.ejs') -%>
 
-<div class="author-title">
-    <input type="hidden" id="author-id" value="<%= author.id %>" >
-    <div class="author-title-name">
-        <p><%= author.details.name %></p>
+<div class="content">
+    <div class="author-title">
+        <input type="hidden" id="author-id" value="<%= author.id %>" >
+        <div class="author-title-name">
+            <p><%= author.details.name %></p>
+        </div>
+        <div class="author-title-biography">
+            <p><%= author.details.biography %></p>
+        </div>
+        <div class="content-books-container" id="books-container"></div>
     </div>
-    <div class="author-title-biography">
-        <p><%= author.details.biography %></p>
-    </div>
-    <div class="content-books-container" id="books-container"></div>
 </div>
+
 <script type="module" src="../../src/books/fetchingBooks/fetchAllBooksByAuthor.js"></script>
 
 <%- include('../footer.ejs') -%>

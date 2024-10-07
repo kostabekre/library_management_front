@@ -4,6 +4,7 @@ import {getBookHandler} from "./getBookHandler.js";
 import {getAuthorHandler} from "./getAuthorHandler.js";
 import {getPublisherHandler} from "./getPublisherHandler.js";
 import {userInfoCollector} from "./userInfoCollector.js";
+import updateBookHandler from "./updateBookHandler.js";
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.get('/', function(req, res){
 
 app.get('/books/:bookId', getBookHandler);
 
+app.get('/books/:bookId/edit', updateBookHandler);
 
 app.get('/login', function(req, res) {
     res.render('authorization/login', {

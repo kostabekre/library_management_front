@@ -2,12 +2,15 @@
 <%- include('../header.ejs') -%>
 <%- include('../content-search.ejs') -%>
 
-<% if(userInfo.IsLoggedIn) { %>
-    <div class="book-control">
-        <a href="/books/create">Add book</a>
-    </div>
-<% } %>
-<div class="content-books-container" id="books-container"></div>
+<div class="content">
+    <% if(userInfo.IsLoggedIn) { %>
+        <div class="book-control">
+            <a href="/books/create">Add book</a>
+        </div>
+    <% } %>
+    <div class="content-books-container" id="books-container"></div>
+</div>
+
 <script type="module" src="../../src/books/fetchingBooks/fetchAllBooks.js"></script>
 
 <%- include('../footer.ejs') -%>
