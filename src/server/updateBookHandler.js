@@ -4,14 +4,16 @@ import {FullBookInfo} from "../books/fullBookInfo.js";
 export default async function updateBookHandler(req, res) {
     const userInfo = userInfoCollector(req);
 
-    if(userInfo.IsLoggedIn === false) {
+    if (userInfo.IsLoggedIn === false ||
+        isNaN(Number(req.params.bookId))) {
         res.render('not-found', {
-            userInfo: userInfo
+            userInfo: userInfoCollector(req)
         });
         return;
     }
 
     const url = "http://localhost:8080/api/books/" + req.params.bookId;
+    console.log(url);
 
     let data;
     try {
@@ -28,9 +30,7 @@ export default async function updateBookHandler(req, res) {
         console.error(e);
         return;
     }
-
     data = new FullBookInfo(data, req.acceptsLanguages()[0]);
-
     res.render('books/update-book', {
         title: data.name,
         book: data,

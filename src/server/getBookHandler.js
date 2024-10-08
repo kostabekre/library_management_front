@@ -9,6 +9,12 @@ export async function getBookHandler(req, res) {
 
         return;
     }
+    if (Number.isNaN(Number(req.params.bookId))) {
+        res.render('not-found', {
+            userInfo: userInfoCollector(req)
+        });
+        return;
+    }
 
     const url = "http://localhost:8080/api/books/" + req.params.bookId;
 

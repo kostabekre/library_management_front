@@ -47,6 +47,7 @@ function getSendData() {
     const sendData = {
         name: formData.get("name"),
         isbn: formData.get("isbn"),
+        description: formData.get("description"),
         authorsId: [Number(formData.get("book-author-1"))],
         publisherId: Number(formData.get("publisherId")),
         bookAmount: formData.get("bookAmount"),

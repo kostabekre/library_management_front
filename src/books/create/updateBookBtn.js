@@ -2,6 +2,7 @@ import showErrors from "../../components/showErrors.js";
 import UpdateBookModel from "./updateBookModel.js";
 
 const button = document.getElementById("book-update-btn");
+const bookId = document.getElementById("book-id").value;
 button.addEventListener("click", () => {
     updateBook();
 })
@@ -17,8 +18,8 @@ async function updateBook() {
     }
 
     try {
-        const response = await fetch("http://localhost:8080/api/books/update", {
-            method: "POST",
+        const response = await fetch(`http://localhost:8080/api/books/${bookId}`, {
+            method: "PUT",
             body: JSON.stringify(sendData),
             headers: {
                 'Accept': 'application/json',
@@ -46,8 +47,7 @@ function getUpdateData() {
     const formData = new FormData(formElement);
     const sendData = {
         name: String(formData.get("name")),
-        bookAmount: Number(formData.get("bookAmount")),
-        bookRating: Number(formData.get("bookRating")),
+        description: String(formData.get("description")),
         genresId: [Number(formData.get("book-genre-1"))],
     }
 

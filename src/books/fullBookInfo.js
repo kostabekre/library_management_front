@@ -4,6 +4,7 @@
      * @param id {number}
      * @param name {string}
      * @param isbn {string}
+     * @param description {string}
      * @param authors {Array<AuthorData>}
      * @param publisher {PublisherData}
      * @param genres {Array<GenreData>}
@@ -12,8 +13,9 @@
      * @param datePublished {string}
      * @param locale {string}
      */
-    constructor({id, name, isbn, authors, publisher, genres, bookRating, bookAmount, datePublished}, locale) {
+    constructor({id, name, isbn, description, authors, publisher, genres, bookRating, bookAmount, datePublished}, locale) {
         this.id = id;
+        this.description = description;
         this.name = name;
         this.authors = authors;
         this.isbn = isbn;

@@ -1,6 +1,11 @@
 ﻿<div class="single-book-wrapper">
     <input type="hidden" id="book-id" value="<%= book.id %>" >
     <div class="single-book-title">
+        <% if(userInfo.IsLoggedIn) { %>
+            <div class="single-book-title-edit">
+                <button type="button" id="change-book-btn">Change Book</button>
+            </div>
+        <% } %>
         <div class="single-book-title-genres">
             <ul>
                 <% book.genres.forEach(function (genre) {  %>
@@ -37,7 +42,14 @@
         <% } %>
     </div>
     <div class="single-book-info-short-description">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <p>
+            <% if(book.description === ""
+            || book.description == null) { %>
+                Description not founded
+            <% } else { %>
+                <%= book.description %>
+            <% } %>
+        </p>
     </div>
     <div class="single-book-info">
         <div class="single-book-info-item">
@@ -99,5 +111,6 @@
 <script type="module" src="/src/books/singleBook/loadSingleBookImage.js"></script>
 <script type="module" src="/src/books/singleBook/showUpdateImagePanel.js"></script>
 <script type="module" src="/src/books/singleBook/updateBookName.js"></script>
+<script type="module" src="/src/books/singleBook/changeBookBtn.js"></script>
 <script type="module" src="/src/books/singleBook/removeBookBtn.js"></script>
 <script type="module" src="/src/books/singleBook/starReview.js"></script>

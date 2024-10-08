@@ -5,7 +5,12 @@
 .single-book-wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1% 2fr;
+    grid-template-rows: 1fr 2fr;
+}
+
+.single-book-title-edit {
+    display: flex;
+    justify-content: right;
 }
 
 .single-book-title {

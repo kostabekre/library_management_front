@@ -2,6 +2,11 @@
 import {GenreData} from "./genreData.js";
 
 const genresDropdown = getDropdownById('book-genre-1', 'select genre');
+const selectedGenreServerElement = document.getElementById('book-genre-server');
+let selectedGenreServerValue;
+if (selectedGenreServerElement !== null) {
+    selectedGenreServerValue = selectedGenreServerElement.value;
+}
 FillDropdown(genresDropdown)
 
 /**
@@ -21,6 +26,10 @@ async function FillDropdown(genresDropdown) {
         json.forEach(genreData => {
             const genre = new GenreData(genreData);
             const newOption = new Option(genre.details.name, genre.id.toString())
+            if(selectedGenreServerValue !== undefined
+                && genre.id === Number(selectedGenreServerValue)) {
+                newOption.selected = true;
+            }
             genresDropdown.add(newOption);
         });
     } catch (e) {

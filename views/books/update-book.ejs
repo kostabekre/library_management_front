@@ -1,11 +1,17 @@
 <form id="book-update-form">
+    <input type="hidden" id="book-id" value="<%= book.id %>">
     <div>
         <label for="book-name">Name</label>
-        <input type="text" id="book-name" name="name">
+        <input value="<%= book.name %>" type="text" id="book-name" name="name">
     </div>
     <div>
         <label for="book-genre-1">Genres</label>
+        <input value="<%= book.genres[0].id %>" type="hidden" id="book-genre-server" name="genre">
         <select name="book-genre-1" id="book-genre-1"></select>
+    </div>
+    <div>
+        <label for="book-description">Description</label>
+        <textarea type="text" name="description" id="book-description"><%= book.description %></textarea>
     </div>
     <div>
         <button type="button" id="book-update-btn">Update</button>
@@ -15,4 +21,4 @@
 </div>
 
 <script src="/src/genres/fillGenresDropdown.js" type="module"></script>
-<script src="/src/books/create/createBookBtn.js" type="module"></script>
+<script src="/src/books/create/updateBookBtn.js" type="module"></script>
