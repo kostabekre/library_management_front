@@ -4,23 +4,20 @@ const bookAmountElement = document.getElementById('book-amount');
 const bookId = Number(document.getElementById('book-id').value);
 hideDecreaseAmountBtn();
 
-if(increaseAmountBtn) {
-    increaseAmountBtn.addEventListener('click', () => {
-        updateBookAmount(bookId, Number(bookAmountElement.innerHTML) + 1)
-            .then(() => {
-                if(Number(bookAmountElement.innerHTML) > 0) {
-                    decreaseAmountBtn.style.display = 'inline';
-                }
-            });
-    });
-}
+increaseAmountBtn.addEventListener('click', () => {
+    updateBookAmount(bookId, Number(bookAmountElement.innerHTML) + 1)
+        .then(() => {
+            if(Number(bookAmountElement.innerHTML) > 0) {
+                decreaseAmountBtn.style.display = 'inline';
+            }
+        });
+});
 
-if(decreaseAmountBtn) {
-    decreaseAmountBtn.addEventListener('click', () => {
-        updateBookAmount(bookId, Number(bookAmountElement.innerHTML) - 1)
-            .then(hideDecreaseAmountBtn);
-    })
-}
+
+decreaseAmountBtn.addEventListener('click', () => {
+    updateBookAmount(bookId, Number(bookAmountElement.innerHTML) - 1)
+        .then(hideDecreaseAmountBtn);
+})
 
 function hideDecreaseAmountBtn() {
     if(Number(bookAmountElement.innerHTML) <= 0) {

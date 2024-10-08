@@ -85,7 +85,7 @@
     font-size: 1.5em;
 }
 
-.star:hover {
+.star-selectable:hover {
     cursor: pointer;
 }
 

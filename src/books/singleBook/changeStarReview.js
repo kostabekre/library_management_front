@@ -1,24 +1,30 @@
-﻿const stars = document.getElementsByClassName("star");
+﻿import {clearStars, stars} from "./starHelper.js";
+
 const selectedRating = document.getElementById("book-selected-rating");
 
-changeStar(Number(selectedRating.value));
+changeStarRegisteredUser(selectedRating.value);
 
 for (const star of stars) {
     star.addEventListener("click", () => {
         const splitted = star.id.split('-');
-        changeStar(Number(splitted[splitted.length - 1]));
+        changeStarRegisteredUser(Number(splitted[splitted.length - 1]));
         saveStarValue();
     })
 }
 
-export default function changeStar(ordinalNumber) {
+function changeStarRegisteredUser(ordinalNumber) {
     clearStars()
+
+    for (const star of stars) {
+        star.classList.add("star-selectable");
+    }
 
     for (let i = 0; i < ordinalNumber; i++) {
         stars[i].classList.add("selected-star");
     }
     selectedRating.value = ordinalNumber;
 }
+
 
 async function saveStarValue() {
     const bookId = document.getElementById("book-id").value;
@@ -40,10 +46,4 @@ async function saveStarValue() {
         return;
     }
     console.log('success!');
-}
-
-function clearStars() {
-    for (const star of stars) {
-        star.className = 'star';
-    }
 }

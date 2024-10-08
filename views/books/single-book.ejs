@@ -117,9 +117,13 @@
 </div>
 
 <script type="module" src="/src/books/singleBook/loadSingleBookImage.js"></script>
-<script type="module" src="/src/books/singleBook/showUpdateImagePanel.js"></script>
-<script type="module" src="/src/books/singleBook/updateBookName.js"></script>
-<script type="module" src="/src/books/singleBook/updateBookAmount.js"></script>
-<script type="module" src="/src/books/singleBook/changeBookBtn.js"></script>
-<script type="module" src="/src/books/singleBook/removeBookBtn.js"></script>
-<script type="module" src="/src/books/singleBook/starReview.js"></script>
+<% if(userInfo.IsLoggedIn) { %>
+    <script type="module" src="/src/books/singleBook/showUpdateImagePanel.js"></script>
+    <script type="module" src="/src/books/singleBook/updateBookName.js"></script>
+    <script type="module" src="/src/books/singleBook/updateBookAmount.js"></script>
+    <script type="module" src="/src/books/singleBook/changeBookBtn.js"></script>
+    <script type="module" src="/src/books/singleBook/removeBookBtn.js"></script>
+    <script type="module" src="/src/books/singleBook/changeStarReview.js"></script>
+<% } else { %>
+    <script type="module" src="/src/books/singleBook/loadStars.js"></script>
+<% } %>
