@@ -62,7 +62,15 @@
         </div>
         <div class="single-book-info-item">
             <span class="item-title">Amount</span>
-            <span class="item-value"><%= book.bookAmount %></span>
+            <span class="item-value">
+                <% if(userInfo.IsLoggedIn) { %>
+                    <button type="button" id="book-decrease-amount">-</button>
+                <% } %>
+                <span id="book-amount"><%= book.bookAmount %></span>
+                <% if(userInfo.IsLoggedIn) { %>
+                    <button type="button" id="book-increase-amount">+</button>
+                <% } %>
+            </span>
         </div>
         <div class="single-book-info-item">
             <span class="item-title">Rating</span>
@@ -111,6 +119,7 @@
 <script type="module" src="/src/books/singleBook/loadSingleBookImage.js"></script>
 <script type="module" src="/src/books/singleBook/showUpdateImagePanel.js"></script>
 <script type="module" src="/src/books/singleBook/updateBookName.js"></script>
+<script type="module" src="/src/books/singleBook/updateBookAmount.js"></script>
 <script type="module" src="/src/books/singleBook/changeBookBtn.js"></script>
 <script type="module" src="/src/books/singleBook/removeBookBtn.js"></script>
 <script type="module" src="/src/books/singleBook/starReview.js"></script>
