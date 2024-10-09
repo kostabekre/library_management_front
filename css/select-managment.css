@@ -1,0 +1,20 @@
+
+.selection {
+
+}
+
+.selection:hover {
+    cursor: pointer;
+}
+
+.non-clickable-link {
+    pointer-events: none;
+}
+
+.select-label-for-checkbox {
+    pointer-events: none;
+}
+
+.select-managment-tools {
+    display: none;
+}
