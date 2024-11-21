@@ -1,0 +1,94 @@
+﻿.single-book {
+    padding: 15px;
+}
+
+.single-book-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 2fr;
+}
+
+.single-book-title-edit {
+    display: flex;
+    justify-content: right;
+}
+
+.single-book-title {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.single-book-title-name-wrapper {
+}
+
+#book-title-name {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.single-book-title-authors ul li {
+    list-style: none;
+}
+
+.single-book-title-authors ul {
+    padding: 0;
+}
+
+.title-author-link {
+    color: blue;
+}
+
+.single-book-title-genres {
+    display: flex;
+}
+
+.single-book-title-genres ul {
+    padding: 0;
+}
+.single-book-title-genres ul li {
+    list-style: none;
+}
+
+.single-book-img-container {
+    padding: 0 15px;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.single-book-img-container img {
+    width: 200px;
+}
+
+.single-book-info-short-description {
+    align-self: center;
+}
+.single-book-info-short-description p {
+    margin: 0;
+}
+
+.single-book-info {
+    align-self: center;
+}
+
+.single-book-info-item {
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#remove-book-btn {
+    color: red;
+}
+
+.star {
+    font-size: 1.5em;
+}
+
+.star-selectable:hover {
+    cursor: pointer;
+}
+
+.selected-star {
+    color: green;
+}

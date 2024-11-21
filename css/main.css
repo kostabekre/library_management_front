@@ -1,0 +1,32 @@
+﻿main {
+    background: aliceblue;
+    height: 100%;
+}
+
+.content {
+    background: cornsilk;
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-search {
+    display: flex;
+    height: 50px;
+    border: gray solid 1px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.context-search-input {
+    display: flex;
+    justify-items: center;
+    gap: 5px;
+}
+
+.context-search-input form {
+    margin: 0;
+}

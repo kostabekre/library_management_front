@@ -37,11 +37,12 @@
     padding: 0;
     display: flex;
     justify-content: center;
+    gap: 15px;
 }
 
 .header-nav ul li {
-    margin: 0 10px;
     list-style-type: none;
+    font-size: 1.2em;
 }
 
 .header-nav-link {

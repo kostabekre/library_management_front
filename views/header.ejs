@@ -1,0 +1,42 @@
+<header>
+    <div class="header-logo">
+        <div class="header-logo-img">
+            <img src="../public/logo.png" alt="">
+        </div>
+        <div class="header-logo-title">
+            <p>Library Management System</p>
+        </div>
+        <div class="header-authorization" id="header-authorization">
+            <% if(!userInfo.IsLoggedIn) { %>
+                <div class="authorization-login">
+                    <span><a href="/login">login</a></span>
+                </div>
+                <div class="authorization-registration">
+                    <span><a href="/registration">registration</a></span>
+                </div>
+            <% } else { %>
+                <div>
+                    <script type="module">
+                        const logoutButton = document.getElementById('logout-button');
+                        logoutButton.addEventListener('click', async function() {
+                            await fetch("http://localhost:8080/logout", {
+                                method: "POST",
+                                credentials: "include"
+                            })
+                            window.location.reload();
+                        })
+                    </script>
+                    <button id="logout-button">exit</button>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    <hr class="header-hr">
+    <nav class="header-nav">
+        <ul>
+            <li><a class="header-nav-link" href="/">Books</a></li>
+            <li><a class="header-nav-link" href="/authors">Authors</a></li>
+            <li><a class="header-nav-link" href="/publishers">Publishers</a></li>
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,129 @@
+﻿<div class="single-book-wrapper">
+    <input type="hidden" id="book-id" value="<%= book.id %>" >
+    <div class="single-book-title">
+        <% if(userInfo.IsLoggedIn) { %>
+            <div class="single-book-title-edit">
+                <button type="button" id="change-book-btn">Change Book</button>
+            </div>
+        <% } %>
+        <div class="single-book-title-genres">
+            <ul>
+                <% book.genres.forEach(function (genre) {  %>
+                    <li><%= genre.details.name %></li>
+                <% }); %>
+            </ul>
+        </div>
+        <div class="single-book-title-name-wrapper">
+            <div id="title-name-view">
+                <span id="book-title-name"><%= book.name %></span>
+                <% if(userInfo.IsLoggedIn) { %>
+                    <button type="button" id="change-name-btn">E</button>
+                    <button type="button" id="remove-book-btn">R</button>
+                <% } %>
+            </div>
+            <div id="title-name-edit">
+                <label for="new-name-input"></label>
+                <input type="text" id="new-name-input">
+                <button type="button" id="save-changed-name-btn">S</button>
+            </div>
+        </div>
+        <div class="single-book-title-authors">
+            <ul>
+                <% book.authors.forEach(function (author) {  %>
+                    <li><a class="title-author-link" href="/authors/<%= author.id %>"><%= author.details.name %></a></li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+    <div class="single-book-img-container">
+        <img src="" alt="" id="book-img">
+        <% if(userInfo.IsLoggedIn) { %>
+            <button type="button" id="update-cover-btn">Update Cover</button>
+        <% } %>
+    </div>
+    <div class="single-book-info-short-description">
+        <p>
+            <% if(book.description === ""
+            || book.description == null) { %>
+                Description not founded
+            <% } else { %>
+                <%= book.description %>
+            <% } %>
+        </p>
+    </div>
+    <div class="single-book-info">
+        <div class="single-book-info-item">
+            <span class="item-title">ISBN</span>
+            <span class="item-value"><%= book.isbn %></span>
+        </div>
+        <div class="single-book-info-item">
+            <span class="item-title">Publisher</span>
+            <span class="item-value"><a href="/publishers/<%= book.publisher.id %>"><%= book.publisher.details.name %></a></span>
+        </div>
+        <div class="single-book-info-item">
+            <span class="item-title">Amount</span>
+            <span class="item-value">
+                <% if(userInfo.IsLoggedIn) { %>
+                    <button type="button" id="book-decrease-amount">-</button>
+                <% } %>
+                <span id="book-amount"><%= book.bookAmount %></span>
+                <% if(userInfo.IsLoggedIn) { %>
+                    <button type="button" id="book-increase-amount">+</button>
+                <% } %>
+            </span>
+        </div>
+        <div class="single-book-info-item">
+            <span class="item-title">Rating</span>
+            <input type="hidden" id="book-selected-rating" value="<%= book.bookRating %>" >
+            <span class="item-value">
+                <span id="star-1" class="star">★</span>
+                <span id="star-2" class="star">★</span>
+                <span id="star-3" class="star">★</span>
+                <span id="star-4" class="star">★</span>
+                <span id="star-5" class="star">★</span>
+            </span>
+        </div>
+        <div class="single-book-info-item">
+            <span class="item-title">Published</span>
+            <span class="item-value"><%= book.datePublished  %></span>
+        </div>
+    </div>
+</div>
+
+
+<div id="update-cover-overlay-wrapper" class="overlay-wrapper">
+    <div class="overlay-content">
+        <div class="file-upload-close-wrapper">
+            <button type="button" id="file-upload-close">x</button>
+        </div>
+        <div class="upload-button">
+            <label for="new-cover-file" id="file-upload-label" class="file-upload-label">Select an image</label>
+            <input type="file" id="new-cover-file" accept="image/png, image/jpg">
+        </div>
+        <div class="upload-confirm">
+            <button type="button" id="new-cover-confirm-btn">Confirm</button>
+        </div>
+    </div>
+    <div class="upload-errors" id="upload-errors"></div>
+</div>
+
+<div id="remove-book-overlay-wrapper" class="overlay-wrapper">
+    <div class="overlay-content">
+        <span class="overlay-content-warning">Remove the book?</span>
+        <button type="button" id="remove-book-yes-btn">Yes</button>
+        <button type="button" id="remove-book-no-btn">No</button>
+    </div>
+    <div class="upload-errors" id="remove-book-errors"></div>
+</div>
+
+<script type="module" src="/src/books/singleBook/loadSingleBookImage.js"></script>
+<% if(userInfo.IsLoggedIn) { %>
+    <script type="module" src="/src/books/singleBook/showUpdateImagePanel.js"></script>
+    <script type="module" src="/src/books/singleBook/updateBookName.js"></script>
+    <script type="module" src="/src/books/singleBook/updateBookAmount.js"></script>
+    <script type="module" src="/src/books/singleBook/changeBookBtn.js"></script>
+    <script type="module" src="/src/books/singleBook/removeBookBtn.js"></script>
+    <script type="module" src="/src/books/singleBook/changeStarReview.js"></script>
+<% } else { %>
+    <script type="module" src="/src/books/singleBook/loadStars.js"></script>
+<% } %>
